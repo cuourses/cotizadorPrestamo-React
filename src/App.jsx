@@ -1,9 +1,11 @@
+import Header from "./components/Header"
+
 function App() {
 
   return (
-    <>
-      <h1>Hola Mundo</h1>
-    </>
+    <div className="w-11/12 max-w-lg my-20 mx-auto shadow p-10">
+      <Header />
+    </div>
   )
 }
 
