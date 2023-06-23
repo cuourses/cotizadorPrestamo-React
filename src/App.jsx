@@ -1,12 +1,18 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Header from "./components/Header"
 import Button from "./components/Button";
-import { formatearCantidad } from "./helpers";
+import { calcularTotalPagar, formatearCantidad } from "./helpers";
 
 function App() {
   const [cantidad, setCantidad] = useState(10000);
   const [meses, setMeses] = useState(6);
   const [total, setTotal] = useState(0);
+
+  // Cuando el componente esta listo ó cuando uno de los state cambia
+  useEffect(() => {
+    const resultadoTotalPagar = calcularTotalPagar(cantidad, meses);
+    setTotal(resultadoTotalPagar)
+  }, [cantidad, meses])
 
   const MIN = 0;
   const MAX = 20000;
@@ -72,7 +78,7 @@ function App() {
       <select
         className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold text-gray-500 outline-none"
         value={meses}
-        onChange={e => setMeses(e.target.value)}
+        onChange={e => setMeses(Number(e.target.value))}
       >
         <option value="6">6 Meses</option>
         <option value="12">12 Meses</option>
@@ -86,7 +92,7 @@ function App() {
         </h2>
 
         <p className="text-xl text-gray-500 text-center font-bold">{meses} Meses </p>
-        <p className="text-xl text-gray-500 text-center font-bold"> Total a pagar </p>
+        <p className="text-xl text-gray-500 text-center font-bold"> Total a pagar {formatearCantidad(total)}</p>
         <p className="text-xl text-gray-500 text-center font-bold"> Mensuales </p>
       </div>
     </div>
