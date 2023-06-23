@@ -77,6 +77,17 @@ function App() {
         <option value="12">12 Meses</option>
         <option value="24">24 Meses</option>
       </select>
+
+      <div className="my-6 bg-gray-50">
+        <h2
+          className="my-6 text-2xl font-extrabold text-gray-500 text-center">
+          Resumen <span className="text-indigo-600">de Pagos</span>
+        </h2>
+
+        <p className="text-xl text-gray-500 text-center font-bold">{meses} Meses </p>
+        <p className="text-xl text-gray-500 text-center font-bold"> Total a pagar </p>
+        <p className="text-xl text-gray-500 text-center font-bold"> Mensuales </p>
+      </div>
     </div>
   )
 }
